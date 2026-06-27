@@ -1,163 +1,137 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarthak Gallery - Premium Visual Experience</title>
-    <!-- Google Fonts: Outfit (headings) & Inter (body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Premium Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SarthakVault — Sarthak Ranjan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <div class="app-container">
-        <!-- Header Section -->
-        <header class="header">
-            <div class="header-logo">
-                <div class="logo-icon">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                </div>
-                <div class="logo-text">
-                    <h1>Sarthak</h1>
-                    <span>Gallery</span>
-                </div>
-            </div>
-            
-            <div class="header-controls">
-                <!-- Search Bar -->
-                <div class="search-box">
-                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" id="search-input" placeholder="Search gallery...">
-                    <button id="clear-search" class="clear-search-btn" aria-label="Clear search">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-                
-                <!-- Theme Toggle -->
-                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
-                    <i class="fa-solid fa-moon moon-icon"></i>
-                    <i class="fa-solid fa-sun sun-icon"></i>
-                </button>
-            </div>
-        </header>
+<div class="page" id="page">
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Hero Intro -->
-            <section class="intro-section">
-                <p class="tagline">Curated Visual Stories</p>
-                <h2 class="section-title">Explore the Extraordinary</h2>
-                <p class="section-desc">A premium gallery showcase featuring nature, modern architecture, adventures, and stunning wildlife.</p>
-            </section>
+  <!-- Hero -->
+  <div class="hero-bg">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="topbar">
+      <div class="logo"><i class="fa-solid fa-camera"></i> SarthakVault</div>
+      <button class="theme-btn" id="themeBtn">
+        <i class="fa-solid fa-sun" id="themeIco"></i>
+        <span id="themeLbl">Light Mode</span>
+      </button>
+    </div>
+    <div class="hero-title">Explore the <span>World</span><br>Through Lenses</div>
+    <div class="hero-sub">Curated visual collection by Sarthak Ranjan</div>
+    <div class="stats">
+      <div class="stat"><div class="stat-n" id="totalStat">22</div><div class="stat-l">Photos</div></div>
+      <div class="stat"><div class="stat-n">5</div><div class="stat-l">Categories</div></div>
+      <div class="stat"><div class="stat-n" id="starStat">0</div><div class="stat-l">Starred</div></div>
+    </div>
+  </div>
 
-            <!-- Filters Section -->
-            <section class="filter-section">
-                <div class="filter-wrapper">
-                    <div class="filter-slider-bg" id="filter-bg"></div>
-                    <button class="filter-btn active" data-filter="all">All Works</button>
-                    <button class="filter-btn" data-filter="nature">Nature</button>
-                    <button class="filter-btn" data-filter="architecture">Architecture</button>
-                    <button class="filter-btn" data-filter="travel">Travel</button>
-                    <button class="filter-btn" data-filter="animals">Animals</button>
-                    <button class="filter-btn" data-filter="favorites"><i class="fa-solid fa-heart filter-heart-icon"></i> Favorites</button>
-                </div>
-                <div class="gallery-stats">
-                    <span id="items-count">0 items</span>
-                </div>
-            </section>
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active" id="tabGallery"><i class="fa-solid fa-images"></i> Gallery</div>
+    <div class="tab" id="tabFav"><i class="fa-solid fa-star"></i> Favourites <span class="tab-badge" id="favBadge">0</span></div>
+  </div>
 
-            <!-- Gallery Grid -->
-            <section class="gallery-section">
-                <div class="gallery-grid" id="gallery-grid">
-                    <!-- Dynamic Grid Items injected by JS -->
-                </div>
-                
-                <!-- Empty State -->
-                <div class="empty-state" id="empty-state">
-                    <i class="fa-regular fa-image empty-icon"></i>
-                    <h3>No matching images found</h3>
-                    <p>Try searching for a different term or changing filters.</p>
-                </div>
-            </section>
-        </main>
+  <!-- Controls -->
+  <div class="controls" id="controls">
+    <div class="sw">
+      <i class="fa-solid fa-magnifying-glass si-icon"></i>
+      <input class="si" id="si" type="text" placeholder="Search photos..."/>
+      <button class="clear-btn" id="clearBtn" title="Clear search"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="filters" id="filters">
+      <button class="fb active" data-cat="all">All</button>
+      <button class="fb" data-cat="nature">Nature</button>
+      <button class="fb" data-cat="architecture">Architecture</button>
+      <button class="fb" data-cat="abstract">Abstract</button>
+      <button class="fb" data-cat="travel">Travel</button>
+      <button class="fb" data-cat="ocean">Ocean</button>
+    </div>
+  </div>
 
-        <!-- Lightbox Modal -->
-        <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image Details">
-            <!-- Lightbox Toolbar -->
-            <div class="lightbox-controls">
-                <button class="lightbox-action-btn" id="lightbox-fav-toggle" aria-label="Toggle Favorite">
-                    <i class="fa-regular fa-heart"></i>
-                </button>
-                <button class="lightbox-action-btn" id="lightbox-slideshow" aria-label="Play/Pause Slideshow">
-                    <i class="fa-solid fa-play"></i>
-                </button>
-                <button class="lightbox-action-btn close" id="lightbox-close" aria-label="Close Lightbox">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            
-            <button class="lightbox-nav prev" id="lightbox-prev" aria-label="Previous Image">
-                <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            
-            <button class="lightbox-nav next" id="lightbox-next" aria-label="Next Image">
-                <i class="fa-solid fa-chevron-right"></i>
-            </button>
-            
-            <div class="lightbox-content">
-                <div class="lightbox-image-wrapper">
-                    <!-- Large Image -->
-                    <img src="" alt="" class="lightbox-img" id="lightbox-img">
-                    <div class="lightbox-loader" id="lightbox-loader">
-                        <div class="spinner"></div>
-                    </div>
-                </div>
-                
-                <!-- Info Overlay -->
-                <div class="lightbox-info">
-                    <div class="lightbox-info-header">
-                        <span class="lightbox-badge" id="lightbox-badge">Category</span>
-                        <span class="lightbox-counter" id="lightbox-counter">1 of 12</span>
-                    </div>
-                    <div class="lightbox-main-details">
-                        <h2 class="lightbox-title" id="lightbox-title">Image Title</h2>
-                        <p class="lightbox-desc" id="lightbox-desc">Detailed image description goes here.</p>
-                    </div>
-                    
-                    <!-- Camera Meta Info Panel -->
-                    <div class="lightbox-meta">
-                        <div class="meta-item">
-                            <i class="fa-solid fa-camera"></i>
-                            <span id="meta-camera">Sony α7R IV</span>
-                        </div>
-                        <div class="meta-item">
-                            <i class="fa-solid fa-maximize"></i>
-                            <span id="meta-aperture">f/1.4</span>
-                        </div>
-                        <div class="meta-item">
-                            <i class="fa-solid fa-gauge"></i>
-                            <span id="meta-shutter">1/250s</span>
-                        </div>
-                        <div class="meta-item">
-                            <i class="fa-solid fa-circle-notch"></i>
-                            <span id="meta-iso">ISO 100</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- Gallery Panel -->
+  <div class="panel active" id="panelGallery">
+    <div class="gallery-area" id="galleryArea">
+      <div class="sort-row">
+        <div class="sort-label">Showing <span id="vcnt">22</span> photos</div>
+        <div class="view-btns">
+          <button class="vb active" id="gvBtn"><i class="fa-solid fa-grip"></i></button>
+          <button class="vb" id="lvBtn"><i class="fa-solid fa-list"></i></button>
         </div>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p>@ Sarthak Internship Project CodeAlpha</p>
-        </footer>
+      </div>
+      <div class="grid" id="grid"></div>
+      <div class="no-results" id="noRes"><i class="fa-solid fa-ban"></i> No photos found</div>
     </div>
 
-    <!-- Core Script -->
-    <script src="script.js"></script>
+    <!-- Lightbox -->
+    <div class="lb-bg" id="lbBg">
+      <div class="lb-backdrop" id="lbBackdrop"></div>
+      <div class="lb-modal">
+        <div class="lb-topbar">
+          <div class="lb-info">
+            <div class="lb-name" id="lbName"></div>
+            <div class="lb-cat" id="lbCat"></div>
+          </div>
+          <div class="lb-btns">
+            <button class="lb-btn star-lb" id="lbStar" title="Star"><i class="fa-solid fa-star"></i></button>
+            <button class="lb-btn" id="lbZoom" title="Zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+            <button class="lb-btn" id="lbShare" title="Share"><i class="fa-solid fa-share-nodes"></i></button>
+            <button class="lb-btn del-lb" id="lbDel" title="Delete"><i class="fa-solid fa-trash"></i></button>
+            <button class="lb-btn close-lb" id="lbClose" title="Close"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+        <div class="lb-stage">
+          <button class="lb-nav" id="lbPrev"><i class="fa-solid fa-chevron-left"></i></button>
+          <div class="lb-imgbox" id="lbImgBox"><img id="lbImg" src="" alt=""/></div>
+          <button class="lb-nav" id="lbNext"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="lb-dots" id="lbDots"></div>
+        <div class="lb-counter" id="lbCtr"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Favourites Panel -->
+  <div class="panel" id="panelFav">
+    <div class="fav-panel">
+      <div class="sort-row">
+        <div class="sort-label">Your starred photos — <span id="favCnt">0</span> saved</div>
+      </div>
+      <div class="fav-empty" id="favEmpty">
+        <i class="fa-solid fa-star"></i>
+        <strong>No favourites yet</strong>
+        <p>Star any photo from the gallery to see it here</p>
+      </div>
+      <div class="fav-grid" id="favGrid"></div>
+    </div>
+  </div>
+
+  <!-- Zoom Overlay -->
+  <div class="zoom-overlay" id="zoomOverlay">
+    <button class="zoom-close" id="zoomClose"><i class="fa-solid fa-xmark"></i></button>
+    <button class="zoom-prev" id="zoomPrev"><i class="fa-solid fa-chevron-left"></i></button>
+    <img id="zoomImg" src="" alt=""/>
+    <button class="zoom-next" id="zoomNext"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="zoom-info" id="zoomInfo"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="fn">Sarthak Ranjan</div>
+    <div class="fs">Internship Project — CodeAlpha Frontend Developer</div>
+    <div class="ft">
+      <span class="ftag"><i class="fa-brands fa-html5"></i> HTML</span>
+      <span class="ftag"><i class="fa-brands fa-css3-alt"></i> CSS</span>
+      <span class="ftag"><i class="fa-brands fa-js"></i> JavaScript</span>
+      <span class="ftag"><i class="fa-solid fa-mobile-screen"></i> Responsive</span>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
 </body>
 </html>
